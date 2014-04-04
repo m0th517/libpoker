@@ -1,5 +1,5 @@
 /*
- * File:   card.h
+ * File:   card.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 5:14 PM
@@ -12,8 +12,8 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "face_type.h"
-#include "suit_type.h"
+#include "face_type.hpp"
+#include "suit_type.hpp"
 
 namespace Poker {
 

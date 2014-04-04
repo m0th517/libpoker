@@ -1,5 +1,5 @@
 /* 
- * File:   pokerdefs.h
+ * File:   pokerdefs.hpp
  * Author: batman
  *
  * Created on February 19, 2014, 10:09 PM

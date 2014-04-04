@@ -9,8 +9,8 @@
 #define ACTION_H
 
 #include <sstream>
-#include "pokerdefs.h"
-#include "action_type.h"
+#include "pokerdefs.hpp"
+#include "action_type.hpp"
 
 namespace Poker {
 

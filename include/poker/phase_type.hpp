@@ -1,5 +1,5 @@
 /*
- * File:   phase_type.h
+ * File:   phase_type.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 11:04 PM

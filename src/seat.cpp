@@ -1,4 +1,4 @@
-#include "seat.h"
+#include "seat.hpp"
 
 namespace Poker {
 Seat::Seat(const Seat &s) {

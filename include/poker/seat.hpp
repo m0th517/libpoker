@@ -1,5 +1,5 @@
 /*
- * File:   seat.h
+ * File:   seat.hpp
  * Author: batman
  *
  * Created on August 8, 2013, 2:05 AM
@@ -8,9 +8,9 @@
 #ifndef SEAT_H
 #define SEAT_H
 
-#include "status_type.h"
-#include "seat_type.h"
-#include "player.h"
+#include "status_type.hpp"
+#include "seat_type.hpp"
+#include "player.hpp"
 
 namespace Poker {
 

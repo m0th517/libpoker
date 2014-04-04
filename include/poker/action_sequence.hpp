@@ -1,5 +1,5 @@
 /*
- * File:   action_sequence.h
+ * File:   action_sequence.hpp
  * Author: batman
  *
  * Created on August 8, 2013, 12:48 AM
@@ -10,8 +10,8 @@
 
 #include <string>
 #include <vector>
-#include "action.h"
-#include "phase_type.h"
+#include "action.hpp"
+#include "phase_type.hpp"
 
 namespace Poker {
 

@@ -1,6 +1,6 @@
 #include <sstream>
-#include "action_sequence.h"
-#include "action_type.h"
+#include "action_sequence.hpp"
+#include "action_type.hpp"
 
 namespace Poker {
 

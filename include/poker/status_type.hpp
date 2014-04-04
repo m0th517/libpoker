@@ -1,5 +1,5 @@
 /*
- * File:   status_type.h
+ * File:   status_type.hpp
  * Author: batman
  *
  * Created on August 8, 2013, 1:38 AM

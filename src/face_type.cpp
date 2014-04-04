@@ -1,4 +1,4 @@
-#include "face_type.h"
+#include "face_type.hpp"
 
 int Poker::FaceType::find_index(const char c) {
   for (int i = 0; i < 13; ++i)

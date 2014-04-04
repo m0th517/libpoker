@@ -1,5 +1,5 @@
 /*
- * File:   face_type.h
+ * File:   face_type.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 7:48 PM

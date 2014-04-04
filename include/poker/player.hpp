@@ -1,5 +1,5 @@
 /*
- * File:   player.h
+ * File:   player.hpp
  * Author: batman
  *
  * Created on August 8, 2013, 12:08 AM
@@ -10,8 +10,8 @@
 
 #include <string>
 #include <vector>
-#include "pokerdefs.h"
-#include "phase_type.h"
+#include "pokerdefs.hpp"
+#include "phase_type.hpp"
 
 namespace Poker {
 

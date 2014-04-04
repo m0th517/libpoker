@@ -1,5 +1,5 @@
 /*
- * File:   hand.h
+ * File:   hand.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 11:18 PM
@@ -10,7 +10,7 @@
 
 #include <bitset>
 #include <vector>
-#include "card.h"
+#include "card.hpp"
 
 namespace Poker {
 

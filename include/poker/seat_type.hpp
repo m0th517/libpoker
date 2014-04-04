@@ -1,5 +1,5 @@
 /*
- * File:   seat_type.h
+ * File:   seat_type.hpp
  * Author: batman
  *
  * Created on August 8, 2013, 1:39 AM

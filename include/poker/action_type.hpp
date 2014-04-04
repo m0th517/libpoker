@@ -1,5 +1,5 @@
 /*
- * File:   action_type.h
+ * File:   action_type.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 11:10 PM

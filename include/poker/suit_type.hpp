@@ -1,5 +1,5 @@
 /*
- * File:   suit_type.h
+ * File:   suit_type.hpp
  * Author: batman
  *
  * Created on July 29, 2013, 7:51 PM
