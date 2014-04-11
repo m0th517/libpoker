@@ -3,7 +3,7 @@
 CXX = clang++ -g
  
 # c++11 compilance and dependency gen 
-CXXFLAGS  = -std=c++11 -MMD -MP 
+CXXFLAGS  = -std=c++11 -MMD -MP
 
 # search paths for header files
 INCLUDES = -I ../include/poker \
@@ -23,7 +23,8 @@ DEP_FILES = $(OBJ_FILES:.o=.d)
 
 ifeq ($(target),debug)
 	# all warnings and disable c++98 compilance
-	CXXFLAGS +=-O0 -Weverything -Wno-c++98-compat
+	# -v for more compilation output
+	CXXFLAGS +=-O0 -Weverything -Wno-c++98-compat -v
 else
     target = release
 	CXXFLAGS +=-O3 -Wall -pedantic

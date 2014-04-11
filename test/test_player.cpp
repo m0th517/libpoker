@@ -1,5 +1,5 @@
 #include <UnitTest++.h>
-#include <player.h>
+#include <player.hpp>
 
 SUITE(PlayerTests) {
   using namespace Poker;

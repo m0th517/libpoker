@@ -1,4 +1,4 @@
-#include <hand.h>
+#include <hand.hpp>
 #include <stdexcept>
 #include <UnitTest++.h>
 

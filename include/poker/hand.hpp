@@ -20,7 +20,7 @@ class Hand {
 private:
   Card highcard, lowcard;
 
-  inline void set_cards(Card c1, Card c2) {
+  void set_cards(Card c1, Card c2) {
     highcard = (c1 > c2) ? c1 : c2;
     lowcard = (c1 < c2) ? c1 : c2;
   }
@@ -28,14 +28,12 @@ private:
 public:
   typedef std::bitset<52> bitset_type;
 
-  Hand(Card c1, Card c2) { set_cards(c1, c2); }
+  Hand(Card c1, Card c2)
+      : highcard(std::max(c1, c2)), lowcard(std::min(c1, c2)) {}
 
-  Hand(int c1, int c2) { set_cards(Card(c1), Card(c2)); }
+  Hand(int c1, int c2) : highcard(std::max(c1, c2)), lowcard(std::min(c1, c2)) {}
 
-  Hand(string _hand) {
-    Card card1 = Card(_hand.substr(0,2));
-    Card card2 = Card(_hand.substr(2,2));
-    set_cards(card1, card2);
+  Hand(string _hand) : Hand(Card(_hand.substr(0,2)),Card(_hand.substr(2,2))) {
   }
 
   inline Card get_highcard() const { return highcard; }

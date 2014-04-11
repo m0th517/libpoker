@@ -1,7 +1,7 @@
 #include <UnitTest++.h>
-#include <seat.h>
-#include <status_type.h>
-#include <seat_type.h>
+#include <seat.hpp>
+#include <status_type.hpp>
+#include <seat_type.hpp>
 
 SUITE(SeatTests) {
   using namespace Poker;
