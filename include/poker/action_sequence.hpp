@@ -1,5 +1,5 @@
 /*
- * File:   action_sequence.hpp
+ * File:   action_sequence.h
  * Author: batman
  *
  * Created on August 8, 2013, 12:48 AM
@@ -34,21 +34,28 @@ public:
 
   /**
    * append action to sequence
-   * @param action to be appended
-   * @param phase in which action took place
+   * @param action
+   * @param phase
    */
   void append(Action action, PhaseType::Enum phase);
 
   /**
    * returns a copy of the current sequence + the passed action.
-   * @param action to be assumed
-   * @param phase in which action took place
+   * @param action
+   * @param phase
+   * @param amount
    * @return copy of this + action
    */
   ActionSequence assume(Action action, PhaseType::Enum phase) const;
 
   /**
-   * @param phase to check
+   * returns a sequence where every action that is contained in both self and
+   * subsequence object are removed..
+   */
+  ActionSequence subtract(const ActionSequence &sequence) const;
+
+  /**
+   * @param phase
    * @return true if sequence has at least one action
    */
   bool has_actions(PhaseType::Enum phase) { return sequence[phase].size() > 0; }
@@ -57,7 +64,7 @@ public:
 
   string to_str() const;
 };
-}
+};
 
 #endif /* ACTION_SEQUENCE_H */
 

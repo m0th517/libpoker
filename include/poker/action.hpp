@@ -17,19 +17,22 @@ namespace Poker {
 using std::string;
 
 struct Action {
+  ActionType::Enum action;
   amt_bb amount;
   int betting_round;
-  ActionType::Enum action;
 
   Action() {}
 
-  Action(ActionType::Enum _action, amt_bb _amount = amt_bb(0),
-         int _betting_round = 0)
-      : amount(_amount), betting_round(_betting_round), action(_action) {}
+  Action(ActionType::Enum _action, amt_bb _amount = amt_bb(0), int _betting_round = 0)
+      : action(_action), amount(_amount), betting_round(_betting_round) {}
 
   bool operator==(const Action &oha) const {
     return (action == oha.action && amount == oha.amount &&
             betting_round == oha.betting_round);
+  }
+
+  bool operator!=(const Action &oha) const {
+    return !( *this == oha );
   }
 
   string to_str() { return ActionType::ToStrShort[action]; }
@@ -55,7 +58,7 @@ struct Action {
     return is_raise() || is_bet() || is_allin();
   }
 };
-}
+};
 
 #endif /* ACTION_H */
 

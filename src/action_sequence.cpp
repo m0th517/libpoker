@@ -23,18 +23,40 @@ ActionSequence ActionSequence::assume(Action action,
   return new_seq;
 }
 
+ActionSequence
+ActionSequence::subtract(const ActionSequence &subsequence) const {
+  ActionSequence new_seq = ActionSequence();
+  for (int i = 0; i < 4; ++i) {
+    PhaseType::Enum phase = static_cast<PhaseType::Enum>(i);
+    for (unsigned a = 0; a < sequence[i].size(); ++a) {
+      Action mainaction = sequence[i][a].action;
+
+      // if subsequence is smaller than i in this phase, insert every action
+      // past
+      if (subsequence.sequence[i].size() < (a + 1)) {
+        new_seq.append(mainaction, phase);
+        continue;
+      }
+
+      Action subaction = subsequence.sequence[i][a].action;
+
+      if (subaction != mainaction) {
+        new_seq.append(mainaction, phase);
+      }
+    }
+  }
+  return new_seq;
+}
+
 string ActionSequence::to_str() const {
   std::stringstream ss;
-  bool has_element;
-  for (unsigned i = 0; i < 4; i++) {
-    has_element = false;
+  for (int i = 0; i < 4; i++) {
     for (unsigned a = 0; a < sequence[i].size(); a++) {
       ss << ActionType::ToStrShort[sequence[i][a].action];
-      has_element = true;
     }
-    if (i != 3 && has_element)
+    if (i != 3)
       ss << "/";
   }
   return ss.str();
 }
-}
+};
