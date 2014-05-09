@@ -1,7 +1,7 @@
 #include "player.hpp"
 #include <iostream>
 
-namespace Poker {
+namespace poker {
 
 Player::Player() : Player("") {}
 

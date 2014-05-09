@@ -1,27 +1,19 @@
-/*
- * File:   status_type.hpp
- * Author: batman
- *
- * Created on August 8, 2013, 1:38 AM
- */
-
 #ifndef STATUS_TYPE_H
 #define STATUS_TYPE_H
 
-namespace Poker {
+namespace poker {
+
+// ----------------------------------------------------------------------
+/// @brief   Representation of the states a player can be in.
+// ----------------------------------------------------------------------
 namespace StatusType {
 
-enum Enum {
-  Active,
-  Inactive,
-  Allin
-};
+enum Enum { Active, Inactive, Allin };
 
-static const char *ToStr[] = { "Active", "Inactive", "Allin" };
+static const char *ToStr[] = {"Active", "Inactive", "Allin"};
 
-static const char *ToStrShort[] = { "A", "I", "AI" };
+static const char *ToStrShort[] = {"A", "I", "AI"};
 };
 }
 
-#endif /* STATUS_TYPE_H */
-
+#endif

@@ -1,32 +1,19 @@
-/* 
- * File:   pokerdefs.hpp
- * Author: batman
- *
- * Created on February 19, 2014, 10:09 PM
- */
-
 #ifndef POKERDEFS_H
-#define	POKERDEFS_H
+#define POKERDEFS_H
 
 #include <decimal.h>
 
-namespace Poker{
-    using namespace dec;
+namespace poker {
+namespace pokerdefs {
+using namespace dec;
 
-    /*
-     * Representation for all monetary
-     * variables. 1 unit is one bigblind
-     */
-    typedef decimal<6> amt_bb;
-
-    inline amt_bb amt_bb_cast(int amt){
-        return decimal_cast<6>(amt);
-    }
-
-    inline amt_bb amt_bb_cast(double amt){
-        return decimal_cast<6>(amt);
-    }
+// ----------------------------------------------------------------------
+/// @brief   Representation for all monetary values.
+///           A unit represents one bigblind
+// ----------------------------------------------------------------------
+typedef decimal<6> bb;
+}
 }
 
-#endif	/* POKERDEFS_H */
+#endif
 

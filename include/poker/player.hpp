@@ -1,10 +1,3 @@
-/*
- * File:   player.hpp
- * Author: batman
- *
- * Created on August 8, 2013, 12:08 AM
- */
-
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -13,29 +6,52 @@
 #include "pokerdefs.hpp"
 #include "phase_type.hpp"
 
-namespace Poker {
+namespace poker {
 
 using std::vector;
 using std::string;
 
+// ----------------------------------------------------------------------
+/// @brief   Represents a Pokerplayer with basic attributes
+// ----------------------------------------------------------------------
 class Player {
 public:
-  string name;
-  amt_bb bankroll;
-  vector<amt_bb> invested;
+  /// the amount of chips the player has in bb
+  bb bankroll;
 
-  Player();
-  Player(string _name);
-  Player(string _name, amt_bb _bankroll);
-  Player(string _name, amt_bb _bankroll, vector<amt_bb> _invested);
+  /// an array to store investments for the game 4 phases separately.
+  vector<bb> invested;
+
+  /// stores if the player is active/inactive or allin
+  StatusType::Enum status;
+
+  // ----------------------------------------------------------------------
+  /// @brief   Constructs a Player without specifying previous investments.
+  ///          investments get initialized with zero.
+  ///
+  /// @param _bankroll the players amount of money
+  /// @param _status   current status of player \sa{ StatusType }
+  // ----------------------------------------------------------------------
+  Player(bb _bankroll, StatusType::Enum _status);
+
+  // ----------------------------------------------------------------------
+  /// @brief   Constructs a Player with all basic attributes.
+  ///
+  /// @param _bankroll  look at other constructor.
+  /// @param _invested  a vector<bb> of size 4. gets resized properly.
+  /// @param _status    look at other constructor.
+  // ----------------------------------------------------------------------
+  Player(bb _bankroll, bb _invested, StatusType::Enum _status);
+
   Player(const Player &p);
+
   Player& operator=(const Player &p);
 
-  virtual ~Player();
-  bool make_investment(amt_bb amount, PhaseType::Enum phase);
-  amt_bb total_investment() const;
+  ~Player();
+
+  bool invest(const bb &amount, const PhaseType::Enum &phase);
+  bb total_investment() const;
 };
 }
 
-#endif /* PLAYER_H */
-
+#endif

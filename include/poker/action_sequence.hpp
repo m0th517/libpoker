@@ -13,7 +13,7 @@
 #include "action.hpp"
 #include "phase_type.hpp"
 
-namespace Poker {
+namespace poker {
 
 using std::vector;
 using std::string;

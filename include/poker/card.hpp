@@ -1,79 +1,96 @@
-/*
- * File:   card.hpp
- * Author: batman
- *
- * Created on July 29, 2013, 5:14 PM
- */
-
 #ifndef CARD_H
 #define CARD_H
 
 #include <string>
-#include <sstream>
 #include <stdexcept>
 
 #include "face_type.hpp"
 #include "suit_type.hpp"
 
-namespace Poker {
+namespace poker {
 
 using std::string;
-using std::stringstream;
 
-/**
- * Represents a card between 1-52 in
- * rayw's format.
- **/
+// ----------------------------------------------------------------------
+/// @brief   Encapsulates a card in RAYW's format.
+// ----------------------------------------------------------------------
 class Card {
-private:
-  int card;
-
 public:
-  Card(int _card) : card(_card) {
+  // ----------------------------------------------------------------------
+  /// @brief    Constructs a card object from an integer
+  ///           value between 1 and 52.
+  ///
+  /// @param card number to create card from
+  // ----------------------------------------------------------------------
+  explicit Card(int card) : _card(card) {
     if (card < 1 || card > 52)
       throw std::out_of_range("Cardvalue is out of bounds. ( 1 - 52 )");
   }
 
-  /**
-  * @param card     string format: Fs
-  *                 F = Facevalue (2,3,4,..,K,A)
-  *                 s = Suit (s,d,c,h)
-  */
-  Card(string _card) {
-    int value = FaceType::find_index(_card[0]);
-    int suit = SuitType::find_index(_card[1]);
+  // ----------------------------------------------------------------------
+  /// @brief  Creates a Card object from a card string.
+  ///
+  ///         string format: 'Fs' where
+  ///           - F = Facevalue (2,3,4,..,K,A)
+  ///           - s = Suit (s,d,c,h)
+  ///
+  /// @param card a string representation of card
+  // ----------------------------------------------------------------------
+  explicit Card(string card) {
+    int value = FaceType::find_index(card[0]);
+    int suit = SuitType::find_index(card[1]);
 
     if (value == -1 || suit == -1)
       throw std::logic_error(
           "Suit or Facevalue of the Card could not be determined.");
 
-    this->card = 4 * value + suit + 1;
+    _card = 4 * value + suit + 1;
   }
 
-  int get_card() const { return card; }
+  // ----------------------------------------------------------------------
+  /// @brief   returns the cardvalue itself
+  ///
+  /// @return int between 1 - 52
+  // ----------------------------------------------------------------------
+  int card() const { return _card; }
 
-  FaceType::Enum get_value() const {
-    return static_cast<FaceType::Enum>((int)((card - get_suit() - 1) * 0.25));
+  // ----------------------------------------------------------------------
+  /// @brief   calculates the face value of the card. \sa{ FaceType }.
+  ///
+  /// @return the facevalue of the card as enum
+  // ----------------------------------------------------------------------
+  FaceType::Enum value() const {
+    return static_cast<FaceType::Enum>((int)((_card - suit() - 1) * 0.25));
   }
 
-  SuitType::Enum get_suit() const {
-    return static_cast<SuitType::Enum>((int)(card - 1) % 4);
+  // ----------------------------------------------------------------------
+  /// @brief   calculates the suit of the card. \sa{ SuitType }.
+  ///
+  /// @return the suit of the card as enum
+  // ----------------------------------------------------------------------
+  SuitType::Enum suit() const {
+    return static_cast<SuitType::Enum>((int)(_card - 1) % 4);
   }
 
-  bool operator==(const Card &oc) const { return (card == oc.get_card()); }
+  // ----------------------------------------------------------------------
+  /// @brief generates string represenation of card.  
+  ///
+  /// @return cardstring. Example: As, Kh, ... 
+  // ----------------------------------------------------------------------
+  string str() const {
+    return string(FaceType::ToStr[value()]) + SuitType::ToStr[suit()];
+  }
+
+  bool operator==(const Card &oc) const { return (_card == oc.card()); }
   bool operator!=(const Card &oc) const { return !(*this == oc); }
-  bool operator<(const Card &oc) const { return (card < oc.get_card()); }
-  bool operator>(const Card &oc) const { return (card > oc.get_card()); }
+  bool operator<(const Card &oc) const { return (_card < oc.card()); }
+  bool operator>(const Card &oc) const { return (_card > oc.card()); }
   bool operator<=(const Card &oc) const { return (*this < oc || *this == oc); }
   bool operator>=(const Card &oc) const { return (*this > oc || *this == oc); }
 
-  string to_str() const {
-    stringstream str;
-    str << FaceType::ToStr[get_value()] << SuitType::ToStr[get_suit()];
-    return str.str();
-  }
+private:
+  int _card;
 };
 }
 
-#endif /* CARD_H */
-
+#endif

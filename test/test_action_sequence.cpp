@@ -1,9 +1,9 @@
 #include <iostream>
 #include <UnitTest++.h>
-#include <action_sequence.h>
+#include <action_sequence.hpp>
 
 SUITE(ActionSequenceTests) {
-  using namespace Poker;
+  using namespace poker;
   using namespace PhaseType;
   using namespace ActionType;
 

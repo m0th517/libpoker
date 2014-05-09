@@ -12,7 +12,7 @@
 #include "pokerdefs.hpp"
 #include "action_type.hpp"
 
-namespace Poker {
+namespace poker {
 
 using std::string;
 

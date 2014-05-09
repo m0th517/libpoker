@@ -2,7 +2,7 @@
 #include "action_sequence.hpp"
 #include "action_type.hpp"
 
-namespace Poker {
+namespace poker {
 
 ActionSequence::ActionSequence() : sequence(vector<Line>(4)) {}
 

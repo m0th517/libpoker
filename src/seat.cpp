@@ -1,6 +1,6 @@
 #include "seat.hpp"
 
-namespace Poker {
+namespace poker {
 Seat::Seat(const Seat &s) {
   status = s.status;
   type = s.type;

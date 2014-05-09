@@ -3,47 +3,47 @@
 
 SUITE(CardTests) {
 
-  using namespace Poker;
+  using namespace poker;
 
   TEST(CardFromNumber) {
     int cardindex = 5; // 3c
     Card c = Card(cardindex);
 
-    CHECK_EQUAL(cardindex, c.get_card());
+    CHECK_EQUAL(cardindex, c.card());
   }
 
   TEST(TestSuits) {
     Card c = Card(5); // 3c
-    CHECK_EQUAL(SuitType::Club, c.get_suit());
+    CHECK_EQUAL(SuitType::Club, c.suit());
 
     c = Card(19); // 6h
-    CHECK_EQUAL(SuitType::Heart, c.get_suit());
+    CHECK_EQUAL(SuitType::Heart, c.suit());
 
     c = Card(2); // 2d
-    CHECK_EQUAL(SuitType::Diamond, c.get_suit());
+    CHECK_EQUAL(SuitType::Diamond, c.suit());
 
     c = Card(24); // 7s
-    CHECK_EQUAL(SuitType::Spade, c.get_suit());
+    CHECK_EQUAL(SuitType::Spade, c.suit());
   }
 
   TEST(TestFaceValues) {
     Card c = Card(5); // 3c
-    CHECK_EQUAL(FaceType::Trey, c.get_value());
+    CHECK_EQUAL(FaceType::Trey, c.value());
 
     c = Card(19); // 6h
-    CHECK_EQUAL(FaceType::Six, c.get_value());
+    CHECK_EQUAL(FaceType::Six, c.value());
 
     c = Card(2); // 2d
-    CHECK_EQUAL(FaceType::Deuce, c.get_value());
+    CHECK_EQUAL(FaceType::Deuce, c.value());
 
     c = Card(24); // 7s
-    CHECK_EQUAL(FaceType::Seven, c.get_value());
+    CHECK_EQUAL(FaceType::Seven, c.value());
 
     c = Card(52); // As
-    CHECK_EQUAL(FaceType::Ace, c.get_value());
+    CHECK_EQUAL(FaceType::Ace, c.value());
 
     c = Card(37); // Jc
-    CHECK_EQUAL(FaceType::Jack, c.get_value());
+    CHECK_EQUAL(FaceType::Jack, c.value());
   }
 
   TEST(CardToString) {
@@ -110,12 +110,12 @@ SUITE(CardTests) {
 
   TEST(CardFromString) {
     Card a = Card("As"); // 52
-    CHECK_EQUAL(52, a.get_card());
+    CHECK_EQUAL(52, a.card());
 
     a = Card("3c"); // 5
-    CHECK_EQUAL(5, a.get_card());
+    CHECK_EQUAL(5, a.card());
 
     a = Card("Jc"); // 37
-    CHECK_EQUAL(37, a.get_card());
+    CHECK_EQUAL(37, a.card());
   }
 }

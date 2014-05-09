@@ -1,29 +1,17 @@
-/*
- * File:   phase_type.hpp
- * Author: batman
- *
- * Created on July 29, 2013, 11:04 PM
- */
-
 #ifndef PHASE_TYPE_H
 #define PHASE_TYPE_H
 
-namespace Poker {
+namespace poker {
+
+// ----------------------------------------------------------------------
+/// @brief   Internal representation of a phase in pokergame.
+// ----------------------------------------------------------------------
 namespace PhaseType {
 
-enum Enum {
-  Preflop,
-  Flop,
-  Turn,
-  River,
-  Showdown
-};
+enum Enum { Preflop, Flop, Turn, River, Showdown };
 
-static const char *ToStr[] = { "Preflop", "Flop", "Turn", "River", "Showdown" };
-
-static const char *ToStrShort[] = { "p", "f", "t", "r", "s" };
+static const char *ToStr[] = {"p", "f", "t", "r", "s"};
 }
 }
 
-#endif /* PHASE_TYPE_H */
-
+#endif

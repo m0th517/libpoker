@@ -4,7 +4,7 @@
 #include <seat_type.hpp>
 
 SUITE(SeatTests) {
-  using namespace Poker;
+  using namespace poker;
 
   TEST(TestSetIs) {
     Seat s(Player("mark", amt_bb(100)), SeatType::Normal, StatusType::Active);

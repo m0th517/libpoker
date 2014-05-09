@@ -1,14 +1,12 @@
-/*
- * File:   face_type.hpp
- * Author: batman
- *
- * Created on July 29, 2013, 7:48 PM
- */
-
 #ifndef FACE_TYPE_H
 #define FACE_TYPE_H
 
-namespace Poker {
+namespace poker {
+
+// ----------------------------------------------------------------------
+/// @brief   Internal representation of the different facevalues a card
+///          can have.
+// ----------------------------------------------------------------------
 namespace FaceType {
 
 enum Enum {
@@ -27,12 +25,18 @@ enum Enum {
   Ace
 };
 
-static const char *ToStr[] = { "2", "3", "4", "5", "6", "7", "8", "9", "T", "J",
-                               "Q", "K", "A" };
+static const char *ToStr[] = {"2", "3", "4", "5", "6", "7", "8",
+                              "9", "T", "J", "Q", "K", "A"};
 
+// ----------------------------------------------------------------------
+/// @brief   function searches for the index of a char in ToStr
+///
+/// @param c char to look up index for possible values are in ToStr.
+///
+/// @return the index of char when found, -1 otherwise.
+// ----------------------------------------------------------------------
 int find_index(const char c);
 }
 }
 
-#endif /* FACE_TYPE_H */
-
+#endif

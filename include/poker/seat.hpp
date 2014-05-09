@@ -12,7 +12,7 @@
 #include "seat_type.hpp"
 #include "player.hpp"
 
-namespace Poker {
+namespace poker {
 
 class Seat {
 public:

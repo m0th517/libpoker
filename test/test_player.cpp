@@ -2,7 +2,7 @@
 #include <player.hpp>
 
 SUITE(PlayerTests) {
-  using namespace Poker;
+  using namespace poker;
   using namespace PhaseType;
 
   TEST(TestInvestment) {

@@ -3,25 +3,25 @@
 #include <UnitTest++.h>
 
 SUITE(HandTests) {
-  using namespace Poker;
+  using namespace poker;
 
   TEST(HandFromCards) {
     Card a = Card("As");
     Card b = Card("4d");
 
     Hand h = Hand(a, b);
-    CHECK_EQUAL(52, h.get_highcard().get_card());
-    CHECK_EQUAL(10, h.get_lowcard().get_card());
+    CHECK_EQUAL(52, h.highcard().card());
+    CHECK_EQUAL(10, h.lowcard().card());
 
     h = Hand(b, a);
-    CHECK_EQUAL(52, h.get_highcard().get_card());
-    CHECK_EQUAL(10, h.get_lowcard().get_card());
+    CHECK_EQUAL(52, h.highcard().card());
+    CHECK_EQUAL(10, h.lowcard().card());
   }
 
   TEST(HandFromString) {
     Hand h = Hand("AsJc");
-    CHECK_EQUAL(52, h.get_highcard().get_card());
-    CHECK_EQUAL(37, h.get_lowcard().get_card());
+    CHECK_EQUAL(52, h.highcard().card());
+    CHECK_EQUAL(37, h.lowcard().card());
   }
 
   TEST(HandEquality) {
@@ -31,24 +31,6 @@ SUITE(HandTests) {
 
     CHECK(a == b);
     CHECK(a != c);
-  }
-
-  TEST(HandToBitset) {
-    Hand a = Hand("As2c");
-    CHECK_EQUAL(a.to_bitset().to_string(),
-                "1000000000000000000000000000000000000000000000000001");
-  }
-
-  TEST(HandToVector) {
-    Hand a = Hand("As2c");
-    std::vector<Card> vec({ Card("As"), Card("2c") });
-    CHECK(a.to_vector() == vec);
-  }
-
-  TEST(HandToRawVector) {
-    Hand a = Hand("As2c");
-    std::vector<int> vec({ Card("As").get_card(), Card("2c").get_card() });
-    CHECK(a.to_raw_vector() == vec);
   }
 
   TEST(HandTestLess) {

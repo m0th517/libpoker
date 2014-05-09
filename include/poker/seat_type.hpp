@@ -8,7 +8,7 @@
 #ifndef SEAT_TYPE_H
 #define SEAT_TYPE_H
 
-namespace Poker {
+namespace poker {
 namespace SeatType {
 
 enum Enum {
