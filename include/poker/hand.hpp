@@ -15,13 +15,12 @@ using std::vector;
 // ----------------------------------------------------------------------
 class Hand {
 public:
-
-    // ----------------------------------------------------------------------
-    /// @brief   Constructs a hand from 2 card objects.
-    ///
-    /// @param c1 first holecard
-    /// @param c2 second holecard
-    // ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  /// @brief   Constructs a hand from 2 card objects.
+  ///
+  /// @param c1 first holecard
+  /// @param c2 second holecard
+  // ----------------------------------------------------------------------
   Hand(Card c1, Card c2)
       : _highcard(std::max(c1, c2)), _lowcard(std::min(c1, c2)) {}
 
@@ -41,17 +40,25 @@ public:
   ///          string format: CC where C is a cardstring with format Fs
   ///           \sa{ Card::Card(string card) }
   ///
-  /// @param _hand
+  /// @param _hand a stringrepresentation of a hand
   // ----------------------------------------------------------------------
-  Hand(string _hand)
+  explicit Hand(string _hand)
       : Hand(Card(_hand.substr(0, 2)), Card(_hand.substr(2, 2))) {}
+
+  Hand(const Hand &oh) : _highcard(oh.highcard()), _lowcard(oh.lowcard()) {}
+
+  Hand operator=(const Hand &oh) {
+    _highcard = oh.highcard();
+    _lowcard = oh.lowcard();
+    return *this;
+  }
 
   ~Hand() {}
 
   // ----------------------------------------------------------------------
   /// @brief   getter for the smaller ( or equal ) card
   ///
-  /// @return a card 
+  /// @return a card
   // ----------------------------------------------------------------------
   Card lowcard() const { return _lowcard; }
 
@@ -118,10 +125,10 @@ public:
 
   // ----------------------------------------------------------------------
   /// @brief   Converts the hand to a Short representation with format:
-  ///          FFs where F is a FaceValue of high and low card and s if 
+  ///          FFs where F is a FaceValue of high and low card and s if
   ///          the hand is suited. the s is omitted if hand is offsuit.
   ///
-  /// @return a handstring 
+  /// @return a handstring
   // ----------------------------------------------------------------------
   string str169() const {
     return string(FaceType::ToStr[_highcard.value()]) +
@@ -129,7 +136,8 @@ public:
   }
 
   // ----------------------------------------------------------------------
-  /// @brief   Converts the hand to a string with format FsFs. \sa{ Card::str() }
+  /// @brief   Converts the hand to a string with format FsFs. \sa{ Card::str()
+  /// }
   ///
   /// @return a string representation of the hand.
   // ----------------------------------------------------------------------

@@ -60,7 +60,7 @@ public:
   /// @return the facevalue of the card as enum
   // ----------------------------------------------------------------------
   FaceType::Enum value() const {
-    return static_cast<FaceType::Enum>((int)((_card - suit() - 1) * 0.25));
+    return static_cast<FaceType::Enum>((_card - suit() - 1) * 0.25);
   }
 
   // ----------------------------------------------------------------------
@@ -69,7 +69,7 @@ public:
   /// @return the suit of the card as enum
   // ----------------------------------------------------------------------
   SuitType::Enum suit() const {
-    return static_cast<SuitType::Enum>((int)(_card - 1) % 4);
+    return static_cast<SuitType::Enum>((_card - 1) % 4);
   }
 
   // ----------------------------------------------------------------------
