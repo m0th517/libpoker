@@ -74,16 +74,16 @@ SUITE(HandTests) {
     Hand b = Hand("Ac2d");
     Hand c = Hand("Ac6c");
 
-    CHECK(a.to_169str() == "K7");
-    CHECK(b.to_169str() == "A2");
-    CHECK(c.to_169str() == "A6s");
+    CHECK(a.str169() == "K7");
+    CHECK(b.str169() == "A2");
+    CHECK(c.str169() == "A6s");
   }
 
   TEST(HandToString) {
     Hand a = Hand("Kc7d");
     Hand b = Hand("Ac2d");
 
-    CHECK(a.to_str() == "Kc7d");
-    CHECK(b.to_str() == "Ac2d");
+    CHECK(a.str() == "Kc7d");
+    CHECK(b.str() == "Ac2d");
   }
 }

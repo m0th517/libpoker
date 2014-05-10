@@ -27,15 +27,6 @@ enum Enum {
 
 static const char *ToStr[] = {"2", "3", "4", "5", "6", "7", "8",
                               "9", "T", "J", "Q", "K", "A"};
-
-// ----------------------------------------------------------------------
-/// @brief   function searches for the index of a char in ToStr
-///
-/// @param c char to look up index for possible values are in ToStr.
-///
-/// @return the index of char when found, -1 otherwise.
-// ----------------------------------------------------------------------
-int find_index(const char c);
 }
 }
 

@@ -48,10 +48,10 @@ SUITE(CardTests) {
 
   TEST(CardToString) {
     Card c = Card(5); // 3c
-    CHECK_EQUAL("3c", c.to_str());
+    CHECK_EQUAL("3c", c.str());
 
     c = Card(37); // Jc
-    CHECK_EQUAL("Jc", c.to_str());
+    CHECK_EQUAL("Jc", c.str());
   }
 
   TEST(CardEquality) {
@@ -99,13 +99,13 @@ SUITE(CardTests) {
   }
 
   TEST(FindSuitIndex) {
-    CHECK_EQUAL(0, SuitType::find_index('c'));
-    CHECK_EQUAL(3, SuitType::find_index('s'));
+    CHECK_EQUAL(0, Card::lookup_suit('c'));
+    CHECK_EQUAL(3, Card::lookup_suit('s'));
   }
 
   TEST(FindFaceIndex) {
-    CHECK_EQUAL(0, FaceType::find_index('2'));
-    CHECK_EQUAL(12, FaceType::find_index('A'));
+    CHECK_EQUAL(0, Card::lookup_face_value('2'));
+    CHECK_EQUAL(12, Card::lookup_face_value('A'));
   }
 
   TEST(CardFromString) {

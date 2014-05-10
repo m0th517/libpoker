@@ -3,7 +3,7 @@ CXX = clang++ -g
 
 # variables for libecalc
 INCLUDES=-I ./include/poker \
-		 -I ../../dep/decimal_for_cpp/include
+		 -isystem ../../dep/decimal_for_cpp/include
 CXXFLAGS=-m64 -static -ansi -std=c++11 \
 		 -MMD -MP 
 
@@ -33,7 +33,6 @@ obj/$(target)/%.o: src/%.cpp
 all: $(LIB_OUT)
 
 doc:
-	@echo "building documentation ..."
 	doxygen doxyfile
 
 clean:

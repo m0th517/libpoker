@@ -37,8 +37,8 @@ public:
   /// @param card a string representation of card
   // ----------------------------------------------------------------------
   explicit Card(string card) {
-    int value = FaceType::find_index(card[0]);
-    int suit = SuitType::find_index(card[1]);
+    int value = lookup_face_value(card[0]);
+    int suit = lookup_suit(card[1]);
 
     if (value == -1 || suit == -1)
       throw std::logic_error(
@@ -79,6 +79,34 @@ public:
   // ----------------------------------------------------------------------
   string str() const {
     return string(FaceType::ToStr[value()]) + SuitType::ToStr[suit()];
+  }
+
+  // ----------------------------------------------------------------------
+  /// @brief   function searches for the index of a char in ToStr
+  ///
+  /// @param c char to look up index for possible values are in ToStr.
+  ///
+  /// @return the index of char when found, -1 otherwise.
+  // ----------------------------------------------------------------------
+  static int lookup_suit(const char &c) {
+    for (int i = 0; i < 4; ++i)
+      if (c == *SuitType::ToStr[i])
+        return i;
+    return -1;
+  }
+
+  // ----------------------------------------------------------------------
+  /// @brief   function searches for the index of a face value in ToStr
+  ///
+  /// @param c char to look up index for possible values are in ToStr.
+  ///
+  /// @return the index of char when found, -1 otherwise.
+  // ----------------------------------------------------------------------
+  static int lookup_face_value(const char &c) {
+    for (int i = 0; i < 13; ++i)
+      if (c == *FaceType::ToStr[i])
+        return i;
+    return -1;
   }
 
   bool operator==(const Card &oc) const { return (_card == oc.card()); }

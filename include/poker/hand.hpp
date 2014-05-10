@@ -123,7 +123,7 @@ public:
   ///
   /// @return a handstring 
   // ----------------------------------------------------------------------
-  string 169str() const {
+  string str169() const {
     return string(FaceType::ToStr[_highcard.value()]) +
            FaceType::ToStr[_lowcard.value()] + (suited() ? "s" : "");
   }
@@ -133,7 +133,7 @@ public:
   ///
   /// @return a string representation of the hand.
   // ----------------------------------------------------------------------
-  string str() const { return _highcard.to_str() + _lowcard.to_str(); }
+  string str() const { return _highcard.str() + _lowcard.str(); }
 
 private:
   Card _highcard, _lowcard;
