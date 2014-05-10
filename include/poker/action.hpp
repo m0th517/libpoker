@@ -1,10 +1,3 @@
-/*
- * File:   action.h
- * Author: batman
- *
- * Created on August 8, 2013, 12:54 AM
- */
-
 #ifndef ACTION_H
 #define ACTION_H
 
@@ -15,28 +8,44 @@
 namespace poker {
 
 using std::string;
+using namespace pokerdefs;
 
+// ----------------------------------------------------------------------
+/// @brief   Representation of a Action a player made.
+// ----------------------------------------------------------------------
 struct Action {
+  /// the amount of money the action costs
+  bb amount;
   ActionType::Enum action;
-  amt_bb amount;
-  int betting_round;
 
-  Action() {}
+  // ----------------------------------------------------------------------
+  /// @brief   Constructs a Action object without an amount. The amount
+  ///          gets initialized with 0.
+  ///
+  /// @param _action action to encapsulate \sa{ ActionType }
+  // ----------------------------------------------------------------------
+  explicit Action(ActionType::Enum _action) : amount(bb(0)), action(_action) {}
 
-  Action(ActionType::Enum _action, amt_bb _amount = amt_bb(0), int _betting_round = 0)
-      : action(_action), amount(_amount), betting_round(_betting_round) {}
+  // ----------------------------------------------------------------------
+  /// @brief   Construct a full Action object.
+  ///
+  /// @param _action action to encapsulate
+  /// @param _amount monetary cost of action
+  // ----------------------------------------------------------------------
+  Action(ActionType::Enum _action, bb _amount)
+      : amount(_amount), action(_action) {}
+
+  ~Action() {}
 
   bool operator==(const Action &oha) const {
-    return (action == oha.action && amount == oha.amount &&
-            betting_round == oha.betting_round);
+    return (action == oha.action && amount == oha.amount);
   }
 
-  bool operator!=(const Action &oha) const {
-    return !( *this == oha );
-  }
+  bool operator!=(const Action &oha) const { return !(*this == oha); }
 
-  string to_str() { return ActionType::ToStrShort[action]; }
-  string to_str_w_amt() {
+  string str() { return ActionType::ToStrShort[action]; }
+
+  string str_w_amt() {
     std::stringstream ss;
     ss << ActionType::ToStrShort[action] << " " << decimal_cast<1>(amount);
     return ss.str();
@@ -60,5 +69,4 @@ struct Action {
 };
 };
 
-#endif /* ACTION_H */
-
+#endif

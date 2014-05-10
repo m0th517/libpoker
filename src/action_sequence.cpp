@@ -12,14 +12,15 @@ ActionSequence::ActionSequence(const ActionSequence &p) {
 
 ActionSequence::~ActionSequence() {}
 
-void ActionSequence::append(Action action, PhaseType::Enum phase) {
+void append(const Action &action, const PhaseType::Enum &phase,
+            const int &betting_round) {
   sequence[phase].push_back(action);
 }
 
-ActionSequence ActionSequence::assume(Action action,
-                                      PhaseType::Enum phase) const {
+ActionSequence ActionSequence::assume(Action action, PhaseType::Enum phase,
+                                      int betting_round) const {
   ActionSequence new_seq = ActionSequence(*this);
-  new_seq.append(action, phase);
+  new_seq.append(action, phase, betting_round);
   return new_seq;
 }
 
@@ -48,7 +49,7 @@ ActionSequence::subtract(const ActionSequence &subsequence) const {
   return new_seq;
 }
 
-string ActionSequence::to_str() const {
+string ActionSequence::str() const {
   std::stringstream ss;
   for (int i = 0; i < 4; i++) {
     for (unsigned a = 0; a < sequence[i].size(); a++) {

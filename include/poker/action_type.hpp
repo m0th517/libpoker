@@ -10,10 +10,10 @@ namespace ActionType {
 
 enum Enum { None, Fold, Check, Call, Raise, AllIn, Bet };
 
-static const char *ToStr[] = {"None",  "Fold",  "Check", "Call",
-                              "Raise", "AllIn", "Bet"};
+static const char *ToStr[] = { "None",  "Fold",  "Check", "Call",
+                               "Raise", "AllIn", "Bet" };
 
-static const char *ToStrShort[] = {"N", "F", "X", "C", "R", "A", "B"};
+static const char *ToStrShort[] = { "N", "F", "X", "C", "R", "A", "B" };
 }
 }
 
