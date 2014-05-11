@@ -8,7 +8,7 @@ SUITE(ActionSequenceTests) {
   using namespace ActionType;
 
   TEST(TestAppend) {
-    ActionSequence seq = ActionSequence();
+    ActionSequence seq;
     CHECK_EQUAL("///", seq.str());
 
     seq.append(Action(Call, bb(10)), Preflop, 0);
@@ -22,7 +22,7 @@ SUITE(ActionSequenceTests) {
   }
 
   TEST(TestAssume) {
-    ActionSequence seq = ActionSequence();
+    ActionSequence seq;
     seq.append(Action(Call, bb(10)), Preflop, 0);
     seq.append(Action(Check, bb(10)), Flop, 0);
     seq.append(Action(Call, bb(10)), Turn, 0);
@@ -34,7 +34,7 @@ SUITE(ActionSequenceTests) {
 
   TEST(TestSubtract) {
     // C/X/C/R
-    ActionSequence seq = ActionSequence();
+    ActionSequence seq;
     seq.append(Action(Call, bb(10)), Preflop, 0);
     seq.append(Action(Check, bb(10)), Flop, 0);
     seq.append(Action(Call, bb(10)), Turn, 0);
@@ -43,7 +43,7 @@ SUITE(ActionSequenceTests) {
     CHECK_EQUAL("C/X/C/R", seq.str());
 
     // C/X
-    ActionSequence subseq = ActionSequence();
+    ActionSequence subseq;
     subseq.append(Action(Call, bb(10)), Preflop, 0);
     subseq.append(Action(Check, bb(10)), Flop, 0);
 
@@ -54,7 +54,7 @@ SUITE(ActionSequenceTests) {
 
   TEST(TestSubtractNonExistingInSeq) {
     // C/X/C/R
-    ActionSequence seq = ActionSequence();
+    ActionSequence seq;
     seq.append(Action(Call, bb(10)), Preflop, 0);
     seq.append(Action(Check, bb(10)), Flop, 0);
     seq.append(Action(Call, bb(10)), Turn, 0);
@@ -63,7 +63,7 @@ SUITE(ActionSequenceTests) {
     CHECK_EQUAL("C/X/C/R", seq.str());
 
     // C/X
-    ActionSequence subseq = ActionSequence();
+    ActionSequence subseq;
     subseq.append(Action(Raise, bb(10)), Preflop, 0);
     subseq.append(Action(Call, bb(10)), Flop, 0);
     subseq.append(Action(Raise, bb(10)), Turn, 3);

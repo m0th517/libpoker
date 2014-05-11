@@ -22,7 +22,7 @@ public:
   /// @param c2 second holecard
   // ----------------------------------------------------------------------
   Hand(Card c1, Card c2)
-      : _highcard(std::max(c1, c2)), _lowcard(std::min(c1, c2)) {}
+      : highcard_(std::max(c1, c2)), lowcard_(std::min(c1, c2)) {}
 
   // ----------------------------------------------------------------------
   /// @brief   Constructs a hand from 2 integers. The params are converted
@@ -32,7 +32,7 @@ public:
   /// @param c2 second holecard
   // ----------------------------------------------------------------------
   Hand(int c1, int c2)
-      : _highcard(std::max(c1, c2)), _lowcard(std::min(c1, c2)) {}
+      : highcard_(std::max(c1, c2)), lowcard_(std::min(c1, c2)) {}
 
   // ----------------------------------------------------------------------
   /// @brief   Constructs a hand from a String.
@@ -45,11 +45,11 @@ public:
   explicit Hand(string _hand)
       : Hand(Card(_hand.substr(0, 2)), Card(_hand.substr(2, 2))) {}
 
-  Hand(const Hand &oh) : _highcard(oh.highcard()), _lowcard(oh.lowcard()) {}
+  Hand(const Hand &oh) : highcard_(oh.highcard()), lowcard_(oh.lowcard()) {}
 
   Hand operator=(const Hand &oh) {
-    _highcard = oh.highcard();
-    _lowcard = oh.lowcard();
+    highcard_ = oh.highcard();
+    lowcard_ = oh.lowcard();
     return *this;
   }
 
@@ -60,17 +60,17 @@ public:
   ///
   /// @return a card
   // ----------------------------------------------------------------------
-  Card lowcard() const { return _lowcard; }
+  Card lowcard() const { return lowcard_; }
 
   // ----------------------------------------------------------------------
   /// @brief   getter for the highest ( or equal ) card
   ///
   /// @return a card
   // ----------------------------------------------------------------------
-  Card highcard() const { return _highcard; }
+  Card highcard() const { return highcard_; }
 
   bool operator==(const Hand &oh) const {
-    return _highcard == oh.highcard() && _lowcard == oh.lowcard();
+    return highcard_ == oh.highcard() && lowcard_ == oh.lowcard();
   }
 
   bool operator!=(const Hand &oh) const { return !(*this == oh); }
@@ -86,8 +86,8 @@ public:
   /// @return  true if this is lesser than oh
   // ----------------------------------------------------------------------
   bool operator<(const Hand &oh) const {
-    return (_highcard < oh.highcard()) ||
-           (_highcard == oh.highcard() && _lowcard < oh.lowcard());
+    return (highcard_ < oh.highcard()) ||
+           (highcard_ == oh.highcard() && lowcard_ < oh.lowcard());
   }
 
   bool operator<=(const Hand &oh) const {
@@ -105,8 +105,8 @@ public:
   /// @return  true if this is greater than oh
   // ----------------------------------------------------------------------
   bool operator>(const Hand &oh) const {
-    return (_highcard > oh.highcard()) ||
-           (_highcard == oh.highcard() && _lowcard > oh.lowcard());
+    return (highcard_ > oh.highcard()) ||
+           (highcard_ == oh.highcard() && lowcard_ > oh.lowcard());
   }
 
   bool operator>=(const Hand &oh) const {
@@ -119,8 +119,8 @@ public:
   /// @return true when hand is suited.
   // ----------------------------------------------------------------------
   bool suited() const {
-    return SuitType::ToStr[_highcard.suit()] ==
-           SuitType::ToStr[_lowcard.suit()];
+    return SuitType::ToStr[highcard_.suit()] ==
+           SuitType::ToStr[lowcard_.suit()];
   }
 
   // ----------------------------------------------------------------------
@@ -131,8 +131,8 @@ public:
   /// @return a handstring
   // ----------------------------------------------------------------------
   string str169() const {
-    return string(FaceType::ToStr[_highcard.value()]) +
-           FaceType::ToStr[_lowcard.value()] + (suited() ? "s" : "");
+    return string(FaceType::ToStr[highcard_.value()]) +
+           FaceType::ToStr[lowcard_.value()] + (suited() ? "s" : "");
   }
 
   // ----------------------------------------------------------------------
@@ -141,10 +141,10 @@ public:
   ///
   /// @return a string representation of the hand.
   // ----------------------------------------------------------------------
-  string str() const { return _highcard.str() + _lowcard.str(); }
+  string str() const { return highcard_.str() + lowcard_.str(); }
 
 private:
-  Card _highcard, _lowcard;
+  Card highcard_, lowcard_;
 };
 }
 

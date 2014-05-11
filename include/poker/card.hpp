@@ -22,7 +22,7 @@ public:
   ///
   /// @param card number to create card from
   // ----------------------------------------------------------------------
-  explicit Card(int card) : _card(card) {
+  explicit Card(int card) : card_(card) {
     if (card < 1 || card > 52)
       throw std::out_of_range("Cardvalue is out of bounds. ( 1 - 52 )");
   }
@@ -44,7 +44,7 @@ public:
       throw std::logic_error(
           "Suit or Facevalue of the Card could not be determined.");
 
-    _card = 4 * value + suit + 1;
+    card_ = 4 * value + suit + 1;
   }
 
   // ----------------------------------------------------------------------
@@ -52,7 +52,7 @@ public:
   ///
   /// @return int between 1 - 52
   // ----------------------------------------------------------------------
-  int card() const { return _card; }
+  int card() const { return card_; }
 
   // ----------------------------------------------------------------------
   /// @brief   calculates the face value of the card. \sa{ FaceType }.
@@ -60,7 +60,7 @@ public:
   /// @return the facevalue of the card as enum
   // ----------------------------------------------------------------------
   FaceType::Enum value() const {
-    return static_cast<FaceType::Enum>((_card - suit() - 1) * 0.25);
+    return static_cast<FaceType::Enum>((card_ - suit() - 1) * 0.25);
   }
 
   // ----------------------------------------------------------------------
@@ -69,7 +69,7 @@ public:
   /// @return the suit of the card as enum
   // ----------------------------------------------------------------------
   SuitType::Enum suit() const {
-    return static_cast<SuitType::Enum>((_card - 1) % 4);
+    return static_cast<SuitType::Enum>((card_ - 1) % 4);
   }
 
   // ----------------------------------------------------------------------
@@ -109,15 +109,15 @@ public:
     return -1;
   }
 
-  bool operator==(const Card &oc) const { return (_card == oc.card()); }
+  bool operator==(const Card &oc) const { return (card_ == oc.card()); }
   bool operator!=(const Card &oc) const { return !(*this == oc); }
-  bool operator<(const Card &oc) const { return (_card < oc.card()); }
-  bool operator>(const Card &oc) const { return (_card > oc.card()); }
+  bool operator<(const Card &oc) const { return (card_ < oc.card()); }
+  bool operator>(const Card &oc) const { return (card_ > oc.card()); }
   bool operator<=(const Card &oc) const { return (*this < oc || *this == oc); }
   bool operator>=(const Card &oc) const { return (*this > oc || *this == oc); }
 
 private:
-  int _card;
+  int card_;
 };
 }
 

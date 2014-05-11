@@ -13,51 +13,30 @@ SUITE(CardTests) {
   }
 
   TEST(TestSuits) {
-    Card c = Card(5); // 3c
-    CHECK_EQUAL(SuitType::Club, c.suit());
-
-    c = Card(19); // 6h
-    CHECK_EQUAL(SuitType::Heart, c.suit());
-
-    c = Card(2); // 2d
-    CHECK_EQUAL(SuitType::Diamond, c.suit());
-
-    c = Card(24); // 7s
-    CHECK_EQUAL(SuitType::Spade, c.suit());
+    CHECK_EQUAL(SuitType::Club, Card("3c").suit());
+    CHECK_EQUAL(SuitType::Heart, Card("6h").suit());
+    CHECK_EQUAL(SuitType::Spade, Card("7s").suit());
+    CHECK_EQUAL(SuitType::Diamond, Card("2d").suit());
   }
 
   TEST(TestFaceValues) {
-    Card c = Card(5); // 3c
-    CHECK_EQUAL(FaceType::Trey, c.value());
-
-    c = Card(19); // 6h
-    CHECK_EQUAL(FaceType::Six, c.value());
-
-    c = Card(2); // 2d
-    CHECK_EQUAL(FaceType::Deuce, c.value());
-
-    c = Card(24); // 7s
-    CHECK_EQUAL(FaceType::Seven, c.value());
-
-    c = Card(52); // As
-    CHECK_EQUAL(FaceType::Ace, c.value());
-
-    c = Card(37); // Jc
-    CHECK_EQUAL(FaceType::Jack, c.value());
+    CHECK_EQUAL(FaceType::Six, Card("6h").value());
+    CHECK_EQUAL(FaceType::Ace, Card("As").value());
+    CHECK_EQUAL(FaceType::Jack, Card("Jc").value());
+    CHECK_EQUAL(FaceType::Trey, Card("3c").value());
+    CHECK_EQUAL(FaceType::Deuce, Card("2d").value());
+    CHECK_EQUAL(FaceType::Seven, Card("7s").value());
   }
 
   TEST(CardToString) {
-    Card c = Card(5); // 3c
-    CHECK_EQUAL("3c", c.str());
-
-    c = Card(37); // Jc
-    CHECK_EQUAL("Jc", c.str());
+    CHECK_EQUAL("3c", Card("3c").str());
+    CHECK_EQUAL("Jc", Card("Jc").str());
   }
 
   TEST(CardEquality) {
-    Card a = Card(5);  // 3c
-    Card b = Card(37); // Jc
-    Card c = Card(5);  // 3c
+    Card a = Card("3c");
+    Card b = Card("Jc");
+    Card c = Card("3c");
 
     CHECK(a != b);
     CHECK(a == c);
@@ -65,34 +44,29 @@ SUITE(CardTests) {
   }
 
   TEST(TestCardLess) {
-    Card a = Card(5);  // 3c
-    Card b = Card(37); // Jc
-    Card c = Card(52); // As
+    Card a = Card("3c");
+    Card b = Card("Jc");
+    Card c = Card("As");
 
     CHECK(a < b);
     CHECK(b < c);
   }
 
   TEST(TestCardLessEqual) {
-    Card a = Card(5);  // 3c
-    Card b = Card(37); // Jc
-    Card c = Card(5);  // 3c
+    Card a = Card("3c");
+    Card b = Card("Jc");
+    Card c = Card("3c");
 
     CHECK(a <= b);
     CHECK(a <= c);
   }
 
-  TEST(TestCardBigger) {
-    Card a = Card(5);  // 3c
-    Card b = Card(37); // Jc
-
-    CHECK(b > a);
-  }
+  TEST(TestCardBigger) { CHECK(Card("Jc") > Card("3c")); }
 
   TEST(TestCardBiggerEqual) {
-    Card a = Card(5);  // 3c
-    Card b = Card(37); // Jc
-    Card c = Card(5);  // 3c
+    Card a = Card("3c");
+    Card b = Card("Jc");
+    Card c = Card("3c");
 
     CHECK(b >= a);
     CHECK(a >= c);
