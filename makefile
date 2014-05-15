@@ -7,7 +7,7 @@ INCLUDES=-I ./include/poker \
 CXXFLAGS=-m64 -static -ansi -std=c++11 \
 		 -MMD -MP 
 
-DOC_OUT = doc
+DOC_OUT = doc/*
 
 ifeq ($(target),debug)
     CXXFLAGS +=-O0 -Weverything -Wno-c++98-compat #-Werror
@@ -39,7 +39,7 @@ clean:
 	rm -f $(OBJ_FILES)
 	rm -f $(DEP_FILES)
 	rm -f $(LIB_OUT)
-	rm -f -r $(DOC_OUT)/*
+	rm -f -r $(DOC_OUT)
 
 -include $(DEP_FILES)
 
