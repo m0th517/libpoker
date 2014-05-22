@@ -22,7 +22,7 @@ public:
   ///
   /// @param card number to create card from
   // ----------------------------------------------------------------------
-  explicit Card(int card) : card_(card) {
+  explicit Card(const int& card) : card_(card) {
     if (card < 1 || card > 52)
       throw std::out_of_range("Cardvalue is out of bounds. ( 1 - 52 )");
   }
@@ -36,7 +36,7 @@ public:
   ///
   /// @param card a string representation of card
   // ----------------------------------------------------------------------
-  explicit Card(string card) {
+  explicit Card(const string& card) {
     int value = lookup_face_value(card[0]);
     int suit = lookup_suit(card[1]);
 

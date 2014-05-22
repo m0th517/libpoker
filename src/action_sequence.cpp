@@ -3,7 +3,7 @@
 
 namespace poker {
 
-ActionSequence::LineAction::LineAction(Action _action, int _betting_round)
+ActionSequence::LineAction::LineAction(const Action& _action, const int& _betting_round)
     : action(_action), betting_round(_betting_round) {}
 
 bool ActionSequence::LineAction::operator==(const LineAction &oa) {

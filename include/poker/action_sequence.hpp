@@ -24,7 +24,7 @@ public:
     Action action;
     int betting_round;
 
-    LineAction(Action action_, int betting_round_);
+    LineAction(const Action& action_, const int& betting_round_);
     bool operator==(const LineAction &oa);
     bool operator!=(const LineAction &oa);
   };

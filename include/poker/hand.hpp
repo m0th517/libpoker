@@ -21,7 +21,7 @@ public:
   /// @param c1 first holecard
   /// @param c2 second holecard
   // ----------------------------------------------------------------------
-  Hand(Card c1, Card c2)
+  Hand(const Card& c1, const Card& c2)
       : highcard_(std::max(c1, c2)), lowcard_(std::min(c1, c2)) {}
 
   // ----------------------------------------------------------------------
@@ -31,7 +31,7 @@ public:
   /// @param c1 first holecard
   /// @param c2 second holecard
   // ----------------------------------------------------------------------
-  Hand(int c1, int c2)
+  Hand(const int& c1, const int& c2)
       : highcard_(std::max(c1, c2)), lowcard_(std::min(c1, c2)) {}
 
   // ----------------------------------------------------------------------
@@ -42,7 +42,7 @@ public:
   ///
   /// @param _hand a stringrepresentation of a hand
   // ----------------------------------------------------------------------
-  explicit Hand(string _hand)
+  explicit Hand(const string& _hand)
       : Hand(Card(_hand.substr(0, 2)), Card(_hand.substr(2, 2))) {}
 
   Hand(const Hand &oh) : highcard_(oh.highcard()), lowcard_(oh.lowcard()) {}

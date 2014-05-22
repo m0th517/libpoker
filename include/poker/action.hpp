@@ -24,7 +24,7 @@ struct Action {
   ///
   /// @param action_ action to encapsulate \sa{ ActionType }
   // ----------------------------------------------------------------------
-  explicit Action(ActionType::Enum action_) : amount(bb(0)), action(action_) {}
+  explicit Action(const ActionType::Enum& action_) : amount(bb(0)), action(action_) {}
 
   // ----------------------------------------------------------------------
   /// @brief   Construct a full Action object.
@@ -32,7 +32,7 @@ struct Action {
   /// @param action_ action to encapsulate
   /// @param amount_ monetary cost of action
   // ----------------------------------------------------------------------
-  Action(ActionType::Enum action_, bb amount_) : amount(amount_), action(action_) {}
+  Action(const ActionType::Enum& action_, const bb& amount_) : amount(amount_), action(action_) {}
 
   bool operator==(const Action &oha) const {
     return (action == oha.action && amount == oha.amount);
