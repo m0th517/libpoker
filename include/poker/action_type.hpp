@@ -8,12 +8,12 @@ namespace poker {
 // ----------------------------------------------------------------------
 namespace ActionType {
 
-enum Enum { None, Fold, Check, Call, Raise, AllIn, Bet };
+enum Enum { None, Fold, Check, Call, Bet, Raise, AllIn };
 
-static const char *ToStr[] = { "None",  "Fold",  "Check", "Call",
-                               "Raise", "AllIn", "Bet" };
+static const char *ToStr[] = {"None", "Fold",  "Check", "Call",
+                              "Bet",  "Raise", "AllIn"};
 
-static const char *ToStrShort[] = { "N", "F", "X", "C", "R", "A", "B" };
+static const char *ToStrShort[] = {"N", "F", "X", "C", "B", "R", "A"};
 }
 }
 
