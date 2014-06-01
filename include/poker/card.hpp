@@ -52,7 +52,7 @@ public:
   ///
   /// @return int between 1 - 52
   // ----------------------------------------------------------------------
-  int card() const { return card_; }
+  unsigned card() const { return card_; }
 
   // ----------------------------------------------------------------------
   /// @brief   calculates the face value of the card. \sa{ FaceType }.
@@ -117,7 +117,7 @@ public:
   bool operator>=(const Card &oc) const { return (*this > oc || *this == oc); }
 
 private:
-  int card_;
+  unsigned card_;
 };
 }
 

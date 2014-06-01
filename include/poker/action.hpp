@@ -57,7 +57,7 @@ struct Action {
 
   inline bool is_bet() const { return action == ActionType::Bet; }
 
-  inline bool is_allin() { return action == ActionType::AllIn; }
+  inline bool is_allin() const { return action == ActionType::AllIn; }
 };
 }
 
