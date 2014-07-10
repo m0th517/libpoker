@@ -22,7 +22,7 @@ public:
   ///
   /// @param card number to create card from
   // ----------------------------------------------------------------------
-  explicit Card(const int& card) : card_(card) {
+  explicit Card(int card) : card_(card) {
     if (card < 1 || card > 52)
       throw std::out_of_range("Cardvalue is out of bounds. ( 1 - 52 )");
   }

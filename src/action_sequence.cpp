@@ -3,7 +3,8 @@
 
 namespace poker {
 
-ActionSequence::LineAction::LineAction(const Action& _action, const int& _betting_round)
+ActionSequence::LineAction::LineAction(const Action &_action,
+                                       const int &_betting_round)
     : action(_action), betting_round(_betting_round) {}
 
 bool ActionSequence::LineAction::operator==(const LineAction &oa) {
@@ -27,13 +28,13 @@ ActionSequence ActionSequence::operator=(const ActionSequence &p) {
 ActionSequence::~ActionSequence() {}
 
 void ActionSequence::append(const Action &action, const PhaseType::Enum &phase,
-                            const int &betting_round) {
+                            int betting_round) {
   sequence[phase].push_back(LineAction(action, betting_round));
 }
 
 ActionSequence ActionSequence::assume(const Action &action,
                                       const PhaseType::Enum &phase,
-                                      const int &betting_round) const {
+                                      int betting_round) const {
   ActionSequence new_seq = ActionSequence(*this);
   new_seq.append(action, phase, betting_round);
   return new_seq;
@@ -68,7 +69,8 @@ bool ActionSequence::has_actions(const PhaseType::Enum &phase) const {
   return sequence[phase].size() > 0;
 }
 
-ActionSequence::Line ActionSequence::phase_actions(const PhaseType::Enum &phase) const {
+ActionSequence::Line
+ActionSequence::phase_actions(const PhaseType::Enum &phase) const {
   return sequence[phase];
 }
 

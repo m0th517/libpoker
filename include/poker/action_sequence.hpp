@@ -24,7 +24,7 @@ public:
     Action action;
     int betting_round;
 
-    LineAction(const Action& action_, const int& betting_round_);
+    LineAction(const Action &action_, const int &betting_round_);
     bool operator==(const LineAction &oa);
     bool operator!=(const LineAction &oa);
   };
@@ -53,7 +53,7 @@ public:
   /// @param betting_round the action took place
   // ----------------------------------------------------------------------
   void append(const Action &action, const PhaseType::Enum &phase,
-              const int &betting_round);
+              int betting_round);
 
   // ----------------------------------------------------------------------
   /// @brief  works similar to append, buts creates a new sequence instead
@@ -66,7 +66,7 @@ public:
   /// @return a copy of the current sequence + the passed action.
   // ----------------------------------------------------------------------
   ActionSequence assume(const Action &action, const PhaseType::Enum &phase,
-                        const int &betting_round) const;
+                        int betting_round) const;
 
   // ----------------------------------------------------------------------
   /// @brief   returns a sequence where every action that is contained

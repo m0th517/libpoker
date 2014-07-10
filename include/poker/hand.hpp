@@ -31,7 +31,7 @@ public:
   /// @param c1 first holecard
   /// @param c2 second holecard
   // ----------------------------------------------------------------------
-  Hand(const int& c1, const int& c2)
+  Hand(int c1, int c2)
       : highcard_(std::max(c1, c2)), lowcard_(std::min(c1, c2)) {}
 
   // ----------------------------------------------------------------------
