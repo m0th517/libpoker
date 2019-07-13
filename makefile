@@ -3,7 +3,7 @@ CXX = clang++ -g
 
 # variables for libecalc
 INCLUDES=-I ./include/poker \
-		 -isystem ../../dep/decimal_for_cpp/include
+		 -isystem ./dep/decimal_for_cpp/include
 CXXFLAGS=-m64 -static -ansi -std=c++11 \
 		 -MMD -MP 
 
@@ -30,7 +30,11 @@ $(LIB_OUT): $(OBJ_FILES)
 obj/$(target)/%.o: src/%.cpp
 	$(CXX) $(INCLUDES) $(CXXFLAGS) $(LIBRARIES) -c -o $@ $<
 
-all: $(LIB_OUT)
+all: prepare $(LIB_OUT)
+
+prepare:
+	mkdir -p obj/{release,debug}
+	mkdir -p lib/{release,debug}
 
 doc:
 	mkdir -p $(DOC_OUT)
