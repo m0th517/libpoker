@@ -7,19 +7,26 @@ Libpoker is a small library for Poker related Datastructures. It currently suppo
 * **ActionSequence** - A collection of Actions 
 
 ## Requirements
-* decimal_for_cpp
-* UnitTest++ for tests
+* decimal_for_cpp ( included as git submodule )
+* UnitTest++ for tests (expects headers and lib to be in /usr/{lib,include})
 
 ## Build
 ```bash
 $ git clone --recursive https://github.com/pandaant/libpoker
 $ cd libpoker
 $ make all
+
+# build documentation (requires doxygen)
+$ make doc
+
+# build and run tests
+$ cd test 
+$ make all run
 ```
 
 ## Usage
 
-Cards
+### Cards
 
 ```c++
 #include <poker/card.hpp>
@@ -50,7 +57,7 @@ a < b;
 a <= c;
 
 ```
-Hands
+### Hands
 
 ```c++
 #include <poker/card.hpp>
@@ -89,7 +96,7 @@ a < b;
 a <= c;
 
 ```
-Actions and Sequences
+### Actions and Sequences
 
 ```c++
 #include <poker/action_sequence.hpp>
@@ -118,10 +125,10 @@ seq.append(Action(Raise, bb(20)), River, 0);
 seq.str(); // "C/X/C/R"
 
 
-// add action and create a new sequence insread of appending
+// add action and create a new sequence instead of appending
 ActionSequence assume_seq = seq.assume(Action(Raise, bb(20)), River, 0);
-seq.str(); 			// "C/X/C/R"
-assume_seq.str(); 	// "C/X/C/RR"
+seq.str();	// "C/X/C/R"
+assume_seq.str();	// "C/X/C/RR"
 
 
 // subtract sequences from each other
