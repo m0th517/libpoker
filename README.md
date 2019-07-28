@@ -24,6 +24,8 @@ $ cd test
 $ make all run
 ```
 
+A compiled version of the doxygen documentation can be found [here](http://mark-zumbruch.de/documentation/libpoker/)
+
 ## Usage
 
 ### Cards
